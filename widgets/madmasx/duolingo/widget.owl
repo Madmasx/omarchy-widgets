@@ -1,7 +1,7 @@
 widget "duolingo" {
   size: 3x2
   minSize: 3x2
-  meta { description: "Tu racha y tus cursos de Duolingo en vivo. Escribe tu usuario en «configurar»; toca el widget para abrir la app"; version: "1.0"; license: "MIT"; category: "fun"; owl: 5 }
+  meta { description: "Tu racha y tus cursos de Duolingo en vivo. Toca el widget para configurar tu usuario y ver el detalle; «abrir duo» abre la app"; version: "1.0"; license: "MIT"; category: "fun"; owl: 5 }
   requires { pacman: [] }
 
   // Cada persona escribe su propio usuario: se guarda en el launcher, nunca en el archivo.
@@ -46,7 +46,8 @@ widget "duolingo" {
     "....oooo..."
   ]
 
-  onTap: androidApp("com.duolingo")
+  // Tocar el tile abre el detalle y la configuración; para la app, el enlace de arriba.
+  onTap: screen()
 
   component Flame(sz = 44) {
     Canvas {
@@ -62,7 +63,7 @@ widget "duolingo" {
     Row {
       align: center
       Text { text: "racha"; style: label; color: muted; weight: 1; maxLines: 1 }
-      Text { text: username == "" ? "configurar ›" : "detalle ›"; style: label; color: accent; width: 96; align: end; maxLines: 1; onTap: screen() }
+      Text { text: "abrir duo ›"; style: label; color: accent; width: 96; align: end; maxLines: 1; onTap: androidApp("com.duolingo") }
     }
     Row {
       gap: 8
