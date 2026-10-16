@@ -7,6 +7,7 @@ widget "LCD Digital Clock" {
     owl: 5
     description: "A retro seven-segment LCD clock with authentic chamfered segments, system language detection, and clean calculator typography."
     version: "2.0"
+    author: "Madmasx"
     license: "MIT"
     category: "time"
   }
@@ -353,7 +354,26 @@ widget "LCD Digital Clock" {
         text: isEs ? "Cristal LCD (fantasma): ${showGhost ? "visible" : "oculto"}" : "LCD ghost segments: ${showGhost ? "visible" : "hidden"}"
         onTap: showGhost = !showGhost
       }
-      Spacer { size: 8 }
+      Spacer { size: 6 }
+      Text {
+        text: isEs ? "Creado por Madmasx" : "Created by Madmasx"
+        style: label
+        color: foreground
+      }
+      Row {
+        gap: 8
+        Button {
+          text: "X: @Madmasx"
+          weight: 1
+          onTap: url("https://x.com/Madmasx")
+        }
+        Button {
+          text: "Git: Madmasx"
+          weight: 1
+          onTap: url("https://github.com/Madmasx")
+        }
+      }
+      Spacer { size: 6 }
       Text {
         text: isEs ? "Los colores se adaptan automáticamente al tema activo de Omarchy." : "Colors follow the active Omarchy theme; nothing is hard-coded."
         style: small
