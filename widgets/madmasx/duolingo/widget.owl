@@ -29,7 +29,7 @@ widget "duolingo" {
   // La API pública del perfil: los mismos datos que ve la app. Sin usuario aún,
   // se consulta un nombre que no existe (la API rechaza un username vacío).
   let query = username == "" ? "owl-unset" : username
-  source duo = http("https://www.duolingo.com/2017-06-30/users?username=${enc(query)}") every 10m timeout 15s json
+  source duo = http("https://www.duolingo.com/2017-06-30/users?username=${enc(query)}") every 2m timeout 15s json
   let u = duo.users[0]
   let cs = u.streakData.currentStreak
   let streak = cs == null ? num(u.streak) : num(cs.length)
